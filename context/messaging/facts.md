@@ -34,6 +34,7 @@ Product one-liner (context, not copy): full-suite HRMS plus employee financial w
 | Security | "ISO 27001 certified and NDPA registered" | https://www.paidhr.com/ (company.md) | Pending |
 | Currencies | "payroll in 45+ currencies" | https://www.paidhr.com/ (company.md) | Pending (LinkedIn and press say 49) |
 | Frontline access | "Employees can check payslips, request leave and access earned wages on WhatsApp and USSD" | Founder LinkedIn post, 2026-10-19 (company.md) | Pending |
+| Attendance into payroll | "Hours from attendance flow straight into payroll" (PaidHR's own line: "Every hour tracked, every hour paid") | https://www.paidhr.com/time-and-attendance (company.md, Modules) | Pending (added 2026-11-17 for the hr-payroll-hiring-manual-payroll spec) |
 | Employer cost of EWA and loans | "at no cost to your business" (the employer may choose to cover EWA transaction fees) | paidhr.com employee-benefits and loan marketplace pages (company.md) | Pending |
 | Funding | "backed by Accion Venture Lab" | Accion release (company.md) | Pending |
 | FAMASI result | "FAMASI's CEO got back about an hour on every payroll run" | YouTube thPhRuim05g (customer-videos.md) | Pending |
