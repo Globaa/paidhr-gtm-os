@@ -1,6 +1,6 @@
 # Workflow Spec: HR or payroll hire, manual payroll skills
 
-**Status:** STRUCTURE-APPROVED 2026-11-17 · copy pending · NG cells live, KE and GH cells on HOLD
+**Status:** COPY-APPROVED 2026-11-17 · NG cells only (KE and GH on HOLD) · not sendable until facts.md claims are approved and a sender is named
 
 Campaign 1 in `output/campaigns/campaign-strategy.md`. Signals U1 and U2 in `context/icp/signal-matrix.md` (workflow W1). Pipeline steps from `context/docs/gtm-system.md`. Built with `/build-workflow-spec`; structure approved by Fredrick on 2026-11-17 at two stops (signals table, angle matrix).
 
@@ -140,4 +140,99 @@ Country (3) x segment (2) x HR staff (2) = **12 cells. 4 live (NG), 8 HOLD (KE, 
 
 ## Copy
 
-Pending. Written by `/campaign-copy` from the angles above and appended here.
+Written with `/campaign-copy` and reviewed as the target personas (founder, MD, HR lead) plus the human test on 2026-11-17. NG cells only (KE and GH wait for their hold to lift). Channel: email (3 steps) plus LinkedIn (empty connection request, 2 DMs). Every claim is in `context/messaging/facts.md` and still **Pending**: approved copy, not yet sendable. Sender: `{{sender_signature}}` / `{{sender_name}}` until facts.md names one. Routes are exhaustive (every live lead is NG-A, NG-B, NG-C or NG-D), so lines routed by cell have no fallback.
+
+### Email 1 (day 0, new thread)
+
+**Subject (static):** `{before the new hire starts|payroll and the new hire}`
+
+**Greeting:** `{{first_name}},`
+
+**L1 (static):** `{Your {{job_title}} job post|The {{job_title}} role you're hiring for} lists {{payroll_duty}} {as part of the role|among its duties}.`
+
+**L2 (dynamic, by cell):**
+- + NG-A: From what I can find on LinkedIn, this would be {{company_name}}'s first HR hire, so I'd guess payroll sits with you or finance until they start.
+- + NG-B: Since {{company_name}} already has an HR team, I'd guess part of this role is the monthly filing with each agency.
+- + NG-C: From what I can find on LinkedIn, it would be {{company_name}}'s first HR hire, so I imagine pay runs through you or your accountant for now.
+- + NG-D: Since {{company_name}} already has HR, I'd guess this role covers the payroll side: payslip questions from staff in the field, and the monthly filings.
+
+**L3 (static, facts.md Variant C):** PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run.
+
+**L3b (dynamic, S2 only):**
+- + NG-C: Hours from attendance flow straight into payroll, and employees can check payslips on WhatsApp and USSD.
+- + NG-D: Employees can check payslips, request leave and access earned wages on WhatsApp and USSD.
+- NG-A, NG-B: no line.
+
+**Social proof (dynamic, by cell):**
+- + NG-A: At FAMASI, a health tech startup, the CEO got back about an hour on every payroll run after moving payroll to PaidHR.
+- + NG-B: Heroshe's statutory remittances used to take two weeks or more before they moved to PaidHR.
+- + NG-C, NG-D: At Heroshe, a logistics company, statutory remittances used to take two weeks or more before they moved to PaidHR.
+
+**CTA (dynamic, by HR staff):**
+- + 0 HR (NG-A, NG-C): `{Worth having this running before the new hire starts?|Would it help to have this in place before the new hire's first month?}`
+- + 1+ HR (NG-B, NG-D): `{Would it help to have the filing side running before they start?|Worth a look before the new person starts?}`
+
+**Sign-off:** `{{sender_signature}}`
+
+### Email 2 (day 3 to 4, same thread, subject "Re:")
+
+**Greeting:** `{{first_name}},`
+
+**L1 (dynamic, by `paye_season`):**
+- + Send date on or before 2027-01-15: The first annual PAYE return under the 2026 tax bands is due by 31 January, so whoever fills the {{job_title}} role will probably start in the thick of it.
+- FALLBACK (after 2027-01-15): Whoever fills the {{job_title}} role will probably spend part of every month on {{payroll_duty}} and the filings around it.
+
+**L2 (static):** PaidHR is already updated for the new tax law.
+
+**L3, proof (static):** ₦934M in PAYE and ₦754M in pension were filed through PaidHR in 2025, all on time.
+
+**CTA (static):** `{Would it help to see how the filing side works?|Want me to show you how the filing side works?}`
+
+**Sign-off:** `{{sender_signature}}`
+
+### Email 3 (day 7 to 10, same thread, subject "Re:")
+
+**Greeting:** `{{first_name}},`
+
+**CTA, right person (dynamic, by HR staff):**
+- + 0 HR (NG-A, NG-C): `{Once your {{job_title}} joins, should I speak with them instead?|Would it make more sense to pick this up with your {{job_title}} once they join?}`
+- + 1+ HR (NG-B, NG-D): `{Is payroll yours at {{company_name}}, or is someone else better to ask?|If payroll sits with finance at {{company_name}}, who would be best to speak with?}`
+
+**Sign-off:** `{{sender_signature}}`
+
+### LinkedIn (rep sends from HubSpot tasks)
+
+**Connection request:** empty, no note, 1 to 2 days after Email 1.
+
+**DM 1 (1 to 2 days after acceptance, dynamic by HR staff):**
+- + 0 HR (NG-A, NG-C): {{first_name}}, will the {{job_title}} you're hiring take over payroll, or will it stay with you?
+- + 1+ HR (NG-B, NG-D): {{first_name}}, will the new {{job_title}} take over the monthly filings, or focus on the people side?
+
+**DM 2 (3 to 5 days after DM 1, static):** `Asking because PaidHR runs payroll and files PAYE and pension on time every run. {Happy to show you if it helps.|Glad to walk you through it if useful.}` Sign: `{{sender_name}}`
+
+### Sample: NG-C (Managing Director, logistics), Email 1 as received
+
+> **Subject:** before the new hire starts
+>
+> {{first_name}},
+>
+> Your HR Officer job post lists pension remittance as part of the role.
+>
+> From what I can find on LinkedIn, it would be {{company_name}}'s first HR hire, so I imagine pay runs through you or your accountant for now.
+>
+> PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run.
+>
+> Hours from attendance flow straight into payroll, and employees can check payslips on WhatsApp and USSD.
+>
+> At Heroshe, a logistics company, statutory remittances used to take two weeks or more before they moved to PaidHR.
+>
+> Worth having this running before the new hire starts?
+>
+> {{sender_signature}}
+
+### Copy notes
+
+- Word counts: E1 NG-A 83, NG-B 70, NG-C 85, NG-D 82. E2 about 60. E3 about 15 to 20. DM 2 about 20.
+- Review changes (2026-11-17): fixed the "a/an" bug before `{{job_title}}`; shorter value line (Variant C); CTA for HR leads no longer reads as replacing their hire; industry descriptors on proof; earned-wages line removed from E3; "on one record" removed from DM 2.
+- Wording added to approved facts, to sign off with them: "after moving payroll to PaidHR", "before they moved to PaidHR", "filed through PaidHR", and the FAMASI and Heroshe industry descriptors.
+- Before sending: PaidHR approves the facts used, a sender is named, the 31 January date is checked against the tax authority, and `/campaign-qa` passes. Sequencer export (`sequencer-export.md`) not yet written.

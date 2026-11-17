@@ -21,6 +21,7 @@
 
 - **Variant A:** "PaidHR is an HR and payroll platform for African businesses: payroll, automatic PAYE and pension filing, and earned wage access for your staff, on one record." (company.md; messaging.md)
 - **Variant B:** "PaidHR helps Nigerian employers pay staff and file PAYE, pension, NHF and NSITF on time every run, without spreadsheets or chasing agencies." (company.md; customer-videos.md)
+- **Variant C (short form of B, no new claim):** "PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run." Pending (added 2026-11-17 for the hr-payroll-hiring-manual-payroll copy)
 
 Product one-liner (context, not copy): full-suite HRMS plus employee financial wellness (EWA, loans, wallet), for African employers from 20 staff up, delivered as cloud software with an employee app, WhatsApp and USSD. (company.md)
 
@@ -30,11 +31,12 @@ Product one-liner (context, not copy): full-suite HRMS plus employee financial w
 |---|---|---|---|
 | 2025 statutory filings | "₦934M in PAYE and ₦754M in pension filed in 2025, all on time" | https://www.paidhr.com/ (company.md) | Pending |
 | 2026 payroll volume | "₦119.2bn in payroll processed in 2026 so far" (site, checked 2026-11-12; goes stale) | https://www.paidhr.com/ (company.md) | Pending |
-| Tax law | "Updated for Nigeria's new tax law from 1 January 2026" | https://www.paidhr.com/ (company.md) | Pending |
+| Tax law | "Updated for Nigeria's new tax law from 1 January 2026". Short form: "already updated for the new tax law" (added 2026-11-17) | https://www.paidhr.com/ (company.md) | Pending |
 | Security | "ISO 27001 certified and NDPA registered" | https://www.paidhr.com/ (company.md) | Pending |
 | Currencies | "payroll in 45+ currencies" | https://www.paidhr.com/ (company.md) | Pending (LinkedIn and press say 49) |
 | Frontline access | "Employees can check payslips, request leave and access earned wages on WhatsApp and USSD" | Founder LinkedIn post, 2026-10-19 (company.md) | Pending |
 | Attendance into payroll | "Hours from attendance flow straight into payroll" (PaidHR's own line: "Every hour tracked, every hour paid") | https://www.paidhr.com/time-and-attendance (company.md, Modules) | Pending (added 2026-11-17 for the hr-payroll-hiring-manual-payroll spec) |
+| Annual PAYE return | "The first annual PAYE return under the 2026 tax bands is due by 31 January" (regulatory date, not a PaidHR claim; source is a search summary, confirm against FIRS/NRS) | market.md; signals.md (A1) | Pending (added 2026-11-17 for the hr-payroll-hiring-manual-payroll spec, Email 2) |
 | Employer cost of EWA and loans | "at no cost to your business" (the employer may choose to cover EWA transaction fees) | paidhr.com employee-benefits and loan marketplace pages (company.md) | Pending |
 | Funding | "backed by Accion Venture Lab" | Accion release (company.md) | Pending |
 | FAMASI result | "FAMASI's CEO got back about an hour on every payroll run" | YouTube thPhRuim05g (customer-videos.md) | Pending |
