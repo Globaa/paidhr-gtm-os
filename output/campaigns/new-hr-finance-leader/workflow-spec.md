@@ -1,6 +1,6 @@
 # Workflow Spec: New HR or finance leader
 
-**Status:** STRUCTURE-APPROVED 2026-11-18 · copy pending · not sendable until facts.md claims are approved and a sender is named
+**Status:** COPY-APPROVED 2026-11-18 · not sendable until facts.md claims are approved and a sender is named · not sendable until facts.md claims are approved and a sender is named
 
 Campaign 4 in `output/campaigns/campaign-strategy.md`. Signal U3 in `context/icp/signal-matrix.md` (workflow W5). Pipeline steps from `context/docs/gtm-system.md`. Built with `/build-workflow-spec`; structure approved by Fredrick on 2026-11-18 at four stops (mother intent and inclusion, sources and signals table, angle matrix, variables and cadence).
 
@@ -122,3 +122,136 @@ Persona x segment x HR staff = **7 cells, all LIVE (NG).** HR: 2 segments x 2 HR
   - Test pull: check that Apollo start dates for Nigerian profiles are fresh. If they lag 60+ days the 90-day window is mostly gone. Biggest risk.
   - facts.md approvals (including the two lines added 2026-11-18) and a named sender.
   - `/campaign-qa` passes on the Clay table and the PlusVibe campaign.
+
+---
+
+## Copy
+
+Written with `/campaign-copy` and reviewed as the target personas (new Head of People at funded tech, new HR Manager at a logistics firm, new CFO at a 200+ employer) plus the human test on 2026-11-18. Channel: email (3 steps) plus LinkedIn (empty connection request, 2 DMs). Every claim is in `context/messaging/facts.md` and still **Pending**. Sender: `{{sender_signature}}` / `{{sender_name}}` until facts.md names one. Routes are exhaustive (every live lead is H1 to H4 or F1 to F3), so lines routed by cell have no fallback; lines routed by `paye_season` do.
+
+### Email 1 (day 0, new thread)
+
+**Subject (static):** `{payroll in your first months|the first filings you own|your first payroll filings}`
+
+**Greeting:** `{{first_name}},`
+
+**L1 (dynamic, by `paye_season`):**
+- + Send date on or before 2027-01-15: You joined {{company_name}} from {{previous_company}} a few months before the first annual PAYE return on the 2026 tax bands, due by 31 January.
+- FALLBACK (after 2027-01-15): You joined {{company_name}} from {{previous_company}} recently, so the next few payroll filings will be the first ones you own.
+
+**L2 (dynamic, by cell):**
+- + H1: I couldn't find anyone else in HR there on LinkedIn, so my guess is payroll is coming over to you from the founder or finance.
+- + H2: {{company_name}} already has an HR team, so I imagine you're picking up a payroll process set up before you joined.
+- + H3: From what I can find on LinkedIn, you're the first HR person there, so pay for shift and site staff probably lands with you too.
+- + H4: With an HR team already there, I'd guess a fair share of what reaches you is payslip and leave questions from staff who aren't at a desk.
+- + F1: I'd guess getting payroll on the new bands to reconcile each month now sits with you.
+- + F2: I'd guess a lot of {{company_name}}'s staff work shifts or on sites, so pay starts from hours collected at each location.
+- + F3: At {{company_name}}'s size, payroll is probably one of several systems feeding your ERP, and one you'll look at early.
+
+**L3, value prop (static, facts.md Variant C):** PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run.
+
+**L3b (dynamic, by cell):**
+- + H1: Each remittance comes with a receipt, so you can see every filing went through.
+- + H2: Each remittance comes with a receipt you can check yourself.
+- + H3: Hours from attendance flow into payroll, and staff check payslips on WhatsApp and USSD.
+- + H4: Employees can check payslips and request leave on WhatsApp and USSD.
+- + F1: It's already updated for the new tax law, with a receipt for each remittance.
+- + F2: Hours from attendance flow straight into payroll, and it's already updated for the new tax law.
+- + F3: It also pushes payroll journals into the enterprise systems your finance team lives in.
+
+**Social proof (dynamic, by cell):**
+- + H1: At FAMASI, a health tech startup, the CEO got back about an hour on every payroll run.
+- + H2: Heroshe's statutory remittances used to take two weeks or more before they moved to PaidHR.
+- + H3, H4: At Heroshe, a logistics company, statutory remittances used to take two weeks or more before they moved to PaidHR.
+- + F1, F2, F3: ₦934M in PAYE and ₦754M in pension were filed through PaidHR in 2025, all on time.
+
+**CTA (dynamic, by persona and HR staff):**
+- + First HR leader (H1, H3): Would it help to have this set up before your next payroll?
+- + HR leader joining a team (H2, H4): Is payroll something you plan to look at soon?
+- + Finance (F1, F2, F3): Worth comparing notes on the payroll side?
+
+**Sign-off:** `{{sender_signature}}`
+
+### Email 2 (day 3 to 4, same thread, subject "Re:")
+
+**Greeting:** `{{first_name}},`
+
+**L1 (dynamic, by persona):**
+- + HR (H1 to H4): ₦934M in PAYE and ₦754M in pension were filed through PaidHR in 2025, all on time.
+- + Finance (F1 to F3): PaidHR customers have seen payroll processing cut from over a week to one day.
+
+**L2 (dynamic, by persona and `paye_season`):**
+- + HR, send date on or before 2027-01-15: It's already updated for the new tax law, ahead of the 31 January return.
+- + HR, after 2027-01-15: It's already updated for the new tax law.
+- + F3: It's already updated for the new tax law.
+- F1, F2: no line (tax-law line already in Email 1).
+
+**CTA (dynamic, by persona):**
+- + HR: Want me to show you what the remittance receipts look like?
+- + Finance: Would it help to see a payroll run from the finance side?
+
+**Sign-off:** `{{sender_signature}}`
+
+### Email 3 (day 7 to 10, same thread, subject "Re:")
+
+**Greeting:** `{{first_name}},`
+
+**CTA, right person (dynamic, by persona and HR staff):**
+- + First HR leader (H1, H3): If payroll is still with finance at {{company_name}} for now, who would be best to speak with?
+- + HR leader joining a team (H2, H4): Does payroll sit with you at {{company_name}}, or with someone else on the team?
+- + Finance (F1, F2, F3): If payroll is run by HR at {{company_name}}, should I speak with them instead?
+
+**Sign-off:** `{{sender_signature}}`
+
+### LinkedIn (rep sends from HubSpot tasks)
+
+**Connection request:** empty, no note, 1 to 2 days after Email 1.
+
+**DM 1 (1 to 2 days after acceptance, dynamic by persona and HR staff):**
+- + First HR leader (H1, H3): {{first_name}}, is payroll moving over to you at {{company_name}}, or staying where it is for now?
+- + HR leader joining a team (H2, H4): {{first_name}}, is payroll part of what you're taking on as {{job_title}}?
+- + Finance (F1, F2, F3): {{first_name}}, is payroll one of the things you're reviewing in your first few months as {{job_title}}?
+
+**DM 2 (3 to 5 days after DM 1, static):** `Asking because PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run, with a receipt for each. {Happy to show you if useful.|Glad to walk you through it if it helps.}` Sign: `{{sender_name}}`
+
+### Sample: H3 (new HR Manager, logistics, no other HR staff), Email 1 as received
+
+> **Subject:** payroll in your first months
+>
+> {{first_name}},
+>
+> You joined {{company_name}} from {{previous_company}} a few months before the first annual PAYE return on the 2026 tax bands, due by 31 January.
+>
+> From what I can find on LinkedIn, you're the first HR person there, so pay for shift and site staff probably lands with you too.
+>
+> PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run.
+>
+> Hours from attendance flow into payroll, and staff check payslips on WhatsApp and USSD.
+>
+> At Heroshe, a logistics company, statutory remittances used to take two weeks or more before they moved to PaidHR.
+>
+> Would it help to have this set up before your next payroll?
+>
+> {{sender_signature}}
+
+### Sample: F3 (new CFO, 200+ employer), Email 2 as received
+
+> **Subject:** Re: the first filings you own
+>
+> {{first_name}},
+>
+> PaidHR customers have seen payroll processing cut from over a week to one day.
+>
+> It's already updated for the new tax law.
+>
+> Would it help to see a payroll run from the finance side?
+>
+> {{sender_signature}}
+
+### Copy notes
+
+- Word counts (E1, season L1): H1 98, H2 93, H3 98, H4 98, F1 80, F2 87, F3 85. Under the 120 ceiling; the 60 target is not reachable without dropping a line. E2 about 25 to 40. E3 about 15 to 18. DM 1 about 13 to 18. DM 2 about 26.
+- Review changes (2026-11-18): rewrote L1 (both variants) so it no longer reads mechanically; removed repeated `{{company_name}}` in L2 (H1, H4) and cut H2 and H3; smoothed F1 and F2; made the H1 receipts line concrete; removed spintax from every dynamic CTA (E1, E2), since dynamic lines resolve to one sentence. Campaign 1 has the same spintax-in-dynamic-CTA issue; not fixed there yet.
+- `{{job_title}}` is used only in DM 1; Email 1 no longer uses it.
+- Wording added to approved facts, to sign off with them: "PaidHR customers have seen payroll processing cut from over a week to one day" (the source is an Accion aggregate, no named customer); "with a receipt for each" / "Each remittance comes with a receipt" (receipts fact added 2026-11-18); FAMASI and Heroshe industry descriptors.
+- Before sending: PaidHR approves the facts used, a sender is named, the 31 January date is checked against the tax authority, the Apollo start-date test pull passes, and `/campaign-qa` passes. Sequencer export (`sequencer-export.md`) not yet written.
