@@ -106,41 +106,42 @@ Tick these off **before** the session. None of them should be done live.
 
 **Why:** the spec (section 2, Exclude) lists companies we must never email, and previous employers that move a person out of this campaign: PaidHR's customers, competitors, and PaidHR itself. We put them in one table so every other table can check against it, both for a person's **current** company and for their **previous** one.
 
-### 1.1 Make the CSV
+### 1.1 The CSV
 
-Create a spreadsheet with **3 columns** and save it as `exclusions.csv`. The names come from `context/messaging/facts.md` (authorized and logo-only customer names), the spec's competitor list, and `context/docs/research/company.md` (investor):
+Use the ready-made `exclusions.csv` in this folder (generated 2026-11-18). It has **6 columns**: `Company Name`, `Domain`, `Type`, `Confidence` (High, Medium, Low, None), `Source` (the URL each domain came from) and `Notes` (what to check). The names come from `context/messaging/facts.md` (authorized and logo-only customer names), the spec's competitor list, and `context/docs/research/company.md` (investor). The first four columns:
 
-| Company Name | Domain | Type |
-|---|---|---|
-| PaidHR | paidhr.com | PaidHR |
-| FAMASI | | Customer |
-| Heroshe | | Customer |
-| Flutterwave | | Customer |
-| Mono | | Customer |
-| Risevest | | Customer |
-| Kredete | | Customer |
-| GetEquity | | Customer |
-| GO54 | | Customer |
-| AEC | | Customer |
-| Noi Polls | | Customer |
-| Sygnite | | Customer |
-| Mira | | Customer |
-| ReelFruit | | Customer |
-| Wilan | | Customer |
-| Waaw Foundation | | Customer |
-| Selar | | Customer |
-| Redeemer Health Village | | Customer |
-| Nafa | | Customer |
-| Gasland | | Customer |
-| SeamlessHR | | Competitor |
-| Workpay | | Competitor |
-| NotchHR | | Competitor |
-| Eazipay | | Competitor |
-| Bujeti | | Competitor |
-| Salario | | Competitor |
-| Accion Venture Lab | | Investor |
+| Company Name | Domain | Type | Confidence |
+|---|---|---|---|
+| PaidHR | paidhr.com | PaidHR | High |
+| FAMASI | famasi.africa | Customer | High |
+| Heroshe | heroshe.com | Customer | High |
+| Flutterwave | flutterwave.com | Customer | High |
+| Mono | mono.co | Customer | Medium |
+| Risevest | risevest.com | Customer | High |
+| Kredete | kredete.io | Customer | High |
+| GetEquity | getequity.io | Customer | Medium |
+| GO54 | go54.com | Customer | High |
+| AEC (Advanced Engineering Consultants) | aec-group.org | Customer | Medium |
+| Noi Polls | noi-polls.com | Customer | High |
+| Sygnite Power & Energy Solutions | sygniteng.com | Customer | High |
+| Mira |  | Customer | None |
+| ReelFruit | reelfruit.com | Customer | High |
+| WILAN Global | wilanglobal.org | Customer | Medium |
+| Waaw Foundation | waawfoundation.org | Customer | High |
+| Selar | selar.co | Customer | High |
+| Selar (old domain) | selar.com | Customer | High |
+| Redeemer's Health Village |  | Customer | None |
+| Nafa |  | Customer | None |
+| Gasland |  | Customer | Low |
+| SeamlessHR | seamlesshr.com | Competitor | High |
+| Workpay | myworkpay.com | Competitor | High |
+| NotchHR | notchhr.io | Competitor | High |
+| Eazipay | myeazipay.com | Competitor | Medium |
+| Bujeti | bujeti.com | Competitor | High |
+| Salario |  | Competitor | None |
+| Accion Venture Lab | accion.org | Investor | High |
 
-**Domain** is how every other table matches against this list, so fill it in for every row. Type it plain, the way Clay shows domains: `example.com`. No `https://`, no `www.`, no slash at the end. Find each one on the company's LinkedIn page or website, and check it's the company's own site, not a product or country subdomain. This guide leaves domains blank on purpose rather than guess them.
+**Domain** is how every other table matches against this list. Domains are written plain, the way Clay shows them: `example.com`. No `https://`, no `www.`, no slash at the end. Every domain was looked up and has a source; none were guessed. Selar has two rows so either of its domains matches. **Five rows have no domain** because the company couldn't be confirmed (Mira, Redeemer's Health Village, Nafa, Gasland, Salario): a blank domain matches nothing, so ask PaidHR for them or find them on each company's LinkedIn page, check it's the company's own site, and fill them in. Also check the Medium and Low rows using their `Notes`.
 
 > **Why domain and not name:** names clash. "Mono", "Mira", "Nafa" and "AEC" are also names of unrelated companies, and the same company can appear as "Heroshe" or "Heroshe Inc". A domain belongs to one company.
 
@@ -152,9 +153,8 @@ Create a spreadsheet with **3 columns** and save it as `exclusions.csv`. The nam
 2. Upload `exclusions.csv`. Name the table `Exclusions`.
 3. Change the `Domain` column's type to **URL** (column header → Edit column → Data type).
 
-> **Ready-made file:** `exclusions.csv` in this folder (generated 2026-11-18) has these rows with domains looked up and sourced, plus three extra columns: `Confidence` (High, Medium, Low, None), `Source` (the URL the domain came from) and `Notes`. Clay imports the extra columns without trouble; every lookup still matches on `Domain` only. 28 rows, because Selar gets two (`selar.co` and its old `selar.com`). Five domains are still blank because the company couldn't be confirmed: Mira (acquired by Chowdeck), Redeemer's Health Village, Nafa, Gasland and Salario. Ask PaidHR for those five, or find them on each company's LinkedIn page. The file is gitignored, so it stays on your machine.
 
-**Check:** 28 rows, 3 columns. Rows with a blank Domain match nothing, so fill them in before you rely on this table.
+**Check:** 28 rows, 6 columns. The file is gitignored, so it stays on your machine. Clay imports the extra columns without trouble; every lookup still matches on `Domain` only.
 **Cost:** free.
 
 ---
