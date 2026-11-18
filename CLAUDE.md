@@ -61,9 +61,9 @@ PaidHR (paidhr.com, formerly Pade HCM): Lagos-based full-suite HRMS for African 
 - Log every change in this week's work log (`work-log/YYYY-Www.md`) with a timestamp.
 
 ## Skills
-Project skills in `.claude/skills/`, from github.com/bolaji-ships/gtm-starter-kit (commit 0e6d90b). Supporting playbooks are in `knowledge-base/playbooks/`, supporting tools in `tools/`.
+Project skills in `.claude/skills/`, from github.com/bolaji-ships/gtm-starter-kit (commit 0e6d90b; `clay-build-plan` added from commit 875f72f on 2026-11-18). Supporting playbooks are in `knowledge-base/playbooks/`, supporting tools in `tools/`.
 - Campaign pipeline, run in this order: `signal-matrix` (ICP segments and the signals that find them) → `campaign-strategy` (15-25 outbound campaign ideas) → `build-workflow-spec` (turn one idea into an approved workflow spec) → `campaign-copy` (cold email and LinkedIn DM copy from an approved spec) → `campaign-qa` (check a Clay table or Instantly/PlusVibe campaign against the spec).
-- Clay build: `campaign-contract` (build sheet for one Clay campaign) → `design-clay-table-json` (table blueprint JSON) → `import-clay-table` (import and test-run in Clay within budget) → `save-clay-schema` (save an approved table to the registry). `build-clay` builds or audits a full Companies + People workbook. `prompt-builder` writes per-row AI prompts for Clay columns.
+- Clay build: `clay-build-plan` (beginner step-by-step Clay build guide plus a flow diagram from an approved spec; instructions only, never touches Clay) or `campaign-contract` (build sheet for one Clay campaign) → `design-clay-table-json` (table blueprint JSON) → `import-clay-table` (import and test-run in Clay within budget) → `save-clay-schema` (save an approved table to the registry). `build-clay` builds or audits a full Companies + People workbook. `prompt-builder` writes per-row AI prompts for Clay columns.
 - Clay costs and data: `calculate-costs` (spend per table and column), `workspace-cost-audit` (monthly workspace spend), `export-tables` (Clay tables to CSV).
 - Deliverability: `inbox-placement-test` (EmailBison + MailReach inbox placement test per sender pool).
 - Web and visuals: `crawl4ai` (crawl sites to Markdown/JSON locally), `agent-browser` (scripted browser automation), `miro-gtm-flowchart` (draw a GTM motion as a Miro flowchart).

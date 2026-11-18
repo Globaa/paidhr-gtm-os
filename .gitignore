@@ -1,7 +1,21 @@
+# secrets
 .env
 .env.*
+!.env.example
+clay-session.json
 .treg/
+.claude/settings.local.json
+
+# lead lists and exports
 *.csv
 *.xlsx
+
+# python and node
+.venv/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# system files
 .DS_Store
-.claude/settings.local.json
