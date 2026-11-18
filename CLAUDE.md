@@ -33,6 +33,7 @@ PaidHR (paidhr.com, formerly Pade HCM): Lagos-based full-suite HRMS for African 
 - `output/campaigns/`: finished campaign assets and copy, one folder per campaign. Read to reuse or iterate.
   - `campaign-strategy.md`: 18 ranked outbound campaign ideas and the pick (campaign 1). DRAFT.
   - `hr-payroll-hiring-manual-payroll/workflow-spec.md`: campaign 1 spec and copy (3 emails, 2 LinkedIn DMs). COPY-APPROVED 2026-11-17, Nigeria cells live, Kenya and Ghana on hold, not sendable until facts are approved and a sender is named.
+  - `new-hr-finance-leader/workflow-spec.md`: campaign 4 spec (new HR or finance leader in the last 90 days, Nigeria, 7 cells). STRUCTURE-APPROVED 2026-11-18, copy pending.
 - `output/outbound/`: outbound sequences, emails and LinkedIn messages. Read before writing new outbound.
 - `output/social/`: social posts and content drafts. Read before writing new social content.
 - `output/data/`: lists, enrichment outputs and analysis (CSV/XLSX are gitignored). Read when building or reusing a list.
