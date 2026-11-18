@@ -33,7 +33,7 @@ A step-by-step guide to building `workflow-spec.md` (in this folder) in Clay. Wr
 
 ## What you are building
 
-The spec says: find **HR leaders and finance leaders in Nigeria who started a new job in the last 90 days, having joined from another company**. Check their company is in one of three segments (S1 funded tech and fintech, S2 frontline operators, S3 large employers of 200+ staff, finance leaders only). For HR leaders, check whether anyone else works in HR there. Then sort each person into one of **7 cells** (H1 to H4 for HR, F1 to F3 for finance), find their email, and write the approved Email 1, 2 and 3 lines and LinkedIn DM 1 for their cell.
+The spec says: find **HR leaders and finance leaders in Nigeria who started a new job in the last 90 days, having joined from another company**. Check their company is in one of three segments (S1 tech and fintech, S2 frontline operators, S3 large employers of 200+ staff except accounting firms, finance leaders only). For HR leaders, check whether anyone else works in HR there. Then sort each person into one of **7 cells** (H1 to H4 for HR, F1 to F3 for finance), find their email, and write the approved Email 1, 2 and 3 lines and LinkedIn DM 1 for their cell.
 
 You will build **4 tables** inside **1 workbook**:
 
@@ -73,7 +73,7 @@ What a finished row in **New Leaders** looks like, reading left to right (made-u
 | **View** | A saved filter on a table, like "only rows ready to send". |
 | **Cell** (in this guide) | One box of the spec's routing matrix, H1 to H4 or F1 to F3. It decides which email lines a person gets. Not to be confused with a spreadsheet cell; when this guide means a spreadsheet cell it says "the cell in that row". |
 | **Persona** | Whether the new leader is in HR (`HR`) or finance (`FIN`). |
-| **Segment** | The company type from the spec: `S1` funded tech and fintech, `S2` frontline operators, `S3` large employers (200+ staff). |
+| **Segment** | The company type from the spec: `S1` tech and fintech, `S2` frontline operators, `S3` large employers (200+ staff). |
 
 ---
 
@@ -174,11 +174,11 @@ Fill in each filter exactly as below. These come from spec sections 2 and 4.
 
 | Filter | Set it to | Why |
 |---|---|---|
-| **Job title: include** (current job) | HR Manager · Head of HR · Head of Human Resources · Human Resources Manager · Human Resources Director · HR Director · HR Lead · Head of People · Head of People & Culture · People Operations Lead · People Operations Manager · CFO · Chief Financial Officer · Head of Finance · Finance Director · Finance Manager · Financial Controller | The spec's HR and finance leader titles (section 2) |
-| **Job title: exclude** | Assistant · Intern · Analyst · Accountant | Junior titles the spec excludes. Leave out "Officer" here, because it would also remove "Chief Financial Officer". Part 3 handles it with a formula. |
+| **Job title: include** (current job) | HR Manager · Head of HR · Head of Human Resources · Human Resources Manager · Human Resources Director · HR Director · HR Lead · Head of People · Head of People & Culture · People Operations Lead · People Operations Manager · Chief People Officer · CHRO · CFO · Chief Financial Officer · Head of Finance · Finance Director · Finance Manager · Financial Controller | The spec's HR and finance leader titles (section 2) |
+| **Job title: exclude** | Assistant · Intern · Analyst · Accountant | Junior titles the spec excludes. Leave out "Officer" here, because it would also remove "Chief Financial Officer" and "Chief People Officer". Part 3 handles it with a formula. |
 | **Person location: country** | Nigeria | Spec section 2: Nigeria only |
 | **Company size** | 11-50 · 51-200 · 201-500 · 501-1,000 · 1,001-5,000 · 5,001-10,000 · 10,001+ | S1 and S2 are 20 to 199 staff, S3 is 200+. Clay's buckets don't start at 20, so the exact floor of 20 is checked after Enrich Company (Part 4.4). |
-| **Company industry: exclude** | Staffing and Recruiting · Human Resources Services | Firms that sell staffing or HR services are a separate play (spec section 2, S4) |
+| **Company industry: exclude** | Staffing and Recruiting · Human Resources Services | Firms that sell staffing or HR services are a separate play (spec section 2, S4). Accounting is excluded only at S3, so it's handled by the `Segment` formula in Part 4.4, not here |
 | **Started current role** (may be called "Time in current role" or "Job start date") | Within the last **3 months** | The heart of the trigger. Clay gives start dates as year and month, so "90 days" becomes "3 months or less". If your search panel doesn't show this filter, skip it: Part 3 has a free formula that does the same job. |
 
 ### 2.3 Check the numbers before importing
@@ -229,11 +229,11 @@ Table settings → **Deduplicate** → choose `LinkedIn Profile`. If one person 
 
 Signal 3 in the spec: which title list matched.
 
-- Plain English for the AI helper: *"FIN if the job title matches a finance leader title (CFO, Chief Financial Officer, Head of Finance, Finance Director, Finance Manager, Financial Controller). Otherwise HR if it matches an HR leader title (Head of HR, Head of People, Head of Human Resources, HR Manager, HR Director, HR Lead, Human Resources Manager, Human Resources Director, People Operations Lead or Manager, People & Culture Lead or Manager). Otherwise blank."*
+- Plain English for the AI helper: *"FIN if the job title matches a finance leader title (CFO, Chief Financial Officer, Head of Finance, Finance Director, Finance Manager, Financial Controller). Otherwise HR if it matches an HR leader title (Head of HR, Head of People, Head of Human Resources, HR Manager, HR Director, HR Lead, Human Resources Manager, Human Resources Director, People Operations Lead or Manager, People & Culture Lead or Manager, Chief People Officer, CHRO). Otherwise blank."*
 - Formula:
 ```javascript
 /\bcfo\b|chief financial officer|head of finance|finance (director|manager)|financial controller/i.test({{Job Title}} || "") ? "FIN"
-: /head of (hr|people|human resources)|\bhr (manager|director|lead)\b|human resources (manager|director)|people (operations|& culture) (lead|manager)/i.test({{Job Title}} || "") ? "HR"
+: /head of (hr|people|human resources)|\bhr (manager|director|lead)\b|human resources (manager|director)|people (operations|& culture) (lead|manager)|chief people officer|\bchro\b/i.test({{Job Title}} || "") ? "HR"
 : ""
 ```
 **Check:** "Head of People & Culture" → HR. "Financial Controller" → FIN. "HR Officer" → blank or HR (Title OK catches it next).
@@ -242,12 +242,12 @@ Signal 3 in the spec: which title list matched.
 
 The spec's negative list (Officer, Assistant, Intern, Analyst, Accountant), but keeping "Chief Financial Officer".
 
-- Plain English: *"True if the job title does NOT contain the words officer, assistant, intern, analyst or accountant, unless it contains chief financial officer."*
+- Plain English: *"True if the job title does NOT contain the words officer, assistant, intern, analyst or accountant, unless it contains chief financial officer or chief people officer."*
 - Formula:
 ```javascript
-!/\b(officer|assistant|intern|analyst|accountant)\b/i.test({{Job Title}} || "") || /chief financial officer/i.test({{Job Title}} || "")
+!/\b(officer|assistant|intern|analyst|accountant)\b/i.test({{Job Title}} || "") || /chief (financial|people) officer/i.test({{Job Title}} || "")
 ```
-**Check:** "HR Officer" → false. "Chief Financial Officer" → true. "Finance Manager" → true. "Head of International Payroll" → true (the word boundaries stop "intern" matching "International").
+**Check:** "HR Officer" → false. "Chief Financial Officer" → true. "Chief People Officer" → true. "Finance Manager" → true. "Head of International Payroll" → true (the word boundaries stop "intern" matching "International").
 
 ### 3.3 `Months in Role`
 
@@ -329,16 +329,17 @@ In `Companies`:
 
 #### `Segment`: S1, S2, S3 or blank (spec signal 4)
 
-- **Plain English:** *"Blank if HQ is not Nigeria. S3 if Employees is 200 or more. S1 if Employees is 20 to 199 and Industry contains software, financial services, IT services or internet. S2 if Employees is 20 to 199 and Industry contains transport, logistics, retail, manufacturing, food and beverage or warehousing. Otherwise blank."*
+- **Plain English:** *"Blank if HQ is not Nigeria. Blank if Employees is 200 or more and Industry contains accounting. S3 if Employees is 200 or more. S1 if Employees is 20 to 199 and Industry contains software, financial services, IT services or internet. S2 if Employees is 20 to 199 and Industry contains transport, logistics, retail, manufacturing, food and beverage or warehousing. Otherwise blank."*
 - **Formula:**
 ```javascript
 !{{HQ Nigeria?}} ? "" :
+Number({{Employees}}) >= 200 && /accounting/i.test({{Industry}} || "") ? "" :
 Number({{Employees}}) >= 200 ? "S3" :
 Number({{Employees}}) >= 20 && /software|financial services|it services|internet/i.test({{Industry}} || "") ? "S1" :
 Number({{Employees}}) >= 20 && /transport|logistic|retail|manufactur|food and beverage|warehous/i.test({{Industry}} || "") ? "S2" :
 ""
 ```
-- **Check:** a 60-person "Software Development" company in Lagos → S1. A 120-person "Truck Transportation" company → S2. A 450-person bank → S3. A 300-person company headquartered in London with a Lagos office → blank.
+- **Check:** a 60-person "Software Development" company in Lagos → S1. A 120-person "Truck Transportation" company → S2. A 450-person bank → S3. A 600-person accounting firm → blank (spec: Accounting is excluded at S3, because those firms often sell payroll). A 300-person company headquartered in London with a Lagos office → blank.
 
 > **Why the HQ check matters:** the search in Part 2 matches a company if it has **any** office in Nigeria. The HQ check is what keeps the campaign to Nigerian employers.
 
@@ -429,9 +430,9 @@ The spec excludes people whose previous employer is a PaidHR customer, a competi
 
 **Check:** if `Previous Domain` is blank this lookup can't work, so fix 7.2 first.
 
-### 7.5 `Still Employed?` (optional but recommended)
+### 7.5 `Still Employed?` (required)
 
-**Why:** search data can lag. One AI check confirms they still hold the job before you email them. The spec doesn't ask for this; it's a Clay safety net (see [Things the spec needs to fix](#things-the-spec-needs-to-fix)).
+**Why:** search data can lag. One AI check confirms they still hold the job before you email them. The spec makes this a required gate (signal 8, decision 2026-11-18): only `YES` passes.
 
 1. **+ Add column** → **Use AI**.
 2. Prompt:
@@ -472,19 +473,22 @@ The spec's 7 cells (section 5): persona x segment x HR team.
 
 Every check from the spec in one column. Only rows with **true** get an email lookup and copy.
 
-- Plain English: *"True if all of these are true: Pass Person Gates, ICP Pass, Joined From Outside is true, Previous Employer Blocked is not true, Still Employed is YES (or blank if you skipped 7.5), and Cell is not blank."*
+- Plain English: *"True if all of these are true: Pass Person Gates, ICP Pass, Joined From Outside is true, Previous Employer Blocked is not true, Still Employed is YES, Cell is not blank, and Hold is not ticked."*
 ```javascript
-{{Pass Person Gates?}} === true && {{ICP Pass?}} === true && {{Joined From Outside?}} === true && {{Previous Employer Blocked?}} !== true && ({{Still Employed?}}?.response === "YES" || !{{Still Employed?}}) && {{Cell}} !== ""
+{{Pass Person Gates?}} === true && {{ICP Pass?}} === true && {{Joined From Outside?}} === true && {{Previous Employer Blocked?}} !== true && {{Still Employed?}}?.response === "YES" && {{Cell}} !== "" && {{Hold}} !== true
 ```
+
+> Add the `Hold` checkbox column (Part 8.3) before this formula, or the formula shows an error.
 
 > **All 7 cells are live** in the spec, so no cell is held back here. What holds the whole campaign back is the sequencer step (Part 12), which stays unrun until `/campaign-qa` passes.
 
 ### 8.3 Max 2 people per company
 
-The spec allows a new HR leader **and** a new finance leader at the same company (max 2). It doesn't say what to do if two new HR leaders (or two new finance leaders) turn up at one company.
+The spec allows a new HR leader **and** a new finance leader at the same company (max 2). If two leaders of the **same** persona qualify at one company, the spec's tie-break (decision 2026-11-18) says: contact the most senior (Chief, Head or Director titles beat Manager or Lead); if still tied, the one who started earlier. Hold the other.
 
-1. In the `Ready to Contact?` = true rows, sort by `Company Domain`.
-2. If one company has two rows with the same `Persona`, keep one and untick the other by hand (add a checkbox column `Hold` and add `&& {{Hold}} !== true` to the end of `Ready to Contact?`). Record which you kept and why. This is in the spec fixes list.
+1. Add a checkbox column `Hold` (**+ Add column** → **Checkbox**), unticked for everyone.
+2. In the rows where every other part of `Ready to Contact?` is true, sort by `Company Domain`.
+3. If one company has two rows with the same `Persona`, apply the tie-break and tick `Hold` on the other row. Don't delete it.
 
 **Check:** filter `Ready to Contact? = true`. Open every row. Would you be happy for each of these people to get the email?
 **Cost:** free.
@@ -527,7 +531,7 @@ Add these columns in `New Leaders`. Each one only needs to work on `Ready to Con
 
 > Run `Company Short` and `Previous Company Short` on a few rows and read them. If a name still ends in "Nig." or similar, add it to the pattern.
 
-> **`PAYE Season?` is worked out when the formula runs, not when the email sends.** Re-run the copy columns before any push after 15 January 2027 so new leads get the fallback lines. See the spec fixes list for leads pushed just before that date.
+> **`PAYE Season?` is worked out when the formula runs, not when the email sends.** The spec sets the **last push with season copy at 2027-01-08**. For pushes after that, change the date in `PAYE Season?` to `2027-01-08` or re-run the copy columns after 15 January, so new leads get the fallback lines.
 
 For every line column below, the **plain English** is the description: paste it into the formula's **Use AI** helper so Clay writes the formula, and keep it as the column's description. Then compare what Clay wrote with the formula below. Every line starts with `!{{Ready to Contact?}} ? "" :`, so rows that won't be emailed stay blank. The wording inside the quotes is copied **exactly** from the spec's Copy section. Don't edit it here: change the spec first, then the formula.
 
@@ -692,6 +696,7 @@ In `New Leaders`, create these views (**+ View** or the view dropdown at the top
 | `LinkedIn only` | `Ready to Contact?` = true AND (`Work Email` is empty OR `Email Status` is not valid) | The rep sending DMs (spec section 7) |
 | `Review: previous employer unclear` | `Pass Person Gates?` = true AND `ICP Pass?` = true AND `Joined From Outside?` is empty | Manual check or the job-change detector fallback |
 | `Review: still employed` | `Still Employed?` response is REVIEW or NO | Manual check before dropping |
+| `Held: tie-break` | `Hold` = true | Same-persona second leader at a company (Part 8.3) |
 | `Review: email domain` | `Email Domain OK?` = false | Manual check |
 | `Dropped` | `Pass Person Gates?` = false OR `ICP Pass?` = false OR `Previous Employer Blocked?` = true | Spot-checking the gates |
 
@@ -767,7 +772,7 @@ Paid, and only on rows that passed every check before it:
 |---|---|---|
 | Enrich Company (4.3) | Each company that passed person gates | about 1 Action per company |
 | Enrich Person (7.1) | People at ICP-pass companies (not HR at S3) | about 1 Action per person |
-| Still Employed? (7.5, optional) | People who joined from outside and aren't blocked | about 1 Action + a small AI cost per person |
+| Still Employed? (7.5, required) | People who joined from outside and aren't blocked | about 1 Action + a small AI cost per person |
 | Email waterfall (9) | `Ready to Contact?` rows only | Actions + Data Credits per provider step that runs |
 | Sequencer push (12) | Valid emails only, on launch day | about 1 Action per lead |
 
@@ -812,18 +817,13 @@ Watch the Actions counter (top of Clay) before and after each paid step, and wri
 
 ## Things the spec needs to fix
 
-Found while writing this guide. Update `workflow-spec.md`:
+All 13 fixes found while writing this guide were applied to `workflow-spec.md` on 2026-11-18 (see its "Revision 2026-11-18" note). Four needed a decision, all made by Fredrick:
 
-1. **Section 3, previous employer:** the spec says the previous employer comes from the Apollo record "at no extra cost". In Clay, the free people search doesn't return job history, so it needs **Enrich Person** (about 1 Action per person, Part 7.1). The spec's fallback, `leadmagic.x.job-change-detector`, runs in treg, not Clay.
-2. **Section 4, signal 1:** start dates come as year and month, so "90 days" is applied as "3 months or less". That can let in someone who started up to about 120 days ago. Accept that, or tighten to 2 months.
-3. **Section 2, S1 definition:** `signal-matrix.md` defines S1 as funded tech and fintech (at least one disclosed funding round). This spec reads S1 by industry and size only, and doesn't read funding. Either drop "funded" from the S1 label for this campaign or add a funding check.
-4. **Section 2 and signal 4, industry lists:** the spec's industry names don't match LinkedIn's current labels exactly (e.g. "Software Development", "Technology, Information and Internet", "Truck Transportation"). The guide matches keywords. List the exact labels the segments accept, or confirm keyword matching.
-5. **Section 2, S1 and S2 size floor:** Clay's company size buckets start at 11-50, so the search can't stop at 20. The floor is enforced by formula after Enrich Company (Part 4.4).
-6. **Section 2, payroll and staffing sellers:** "Firms that sell payroll or staffing services" has no deterministic read. The guide excludes the Staffing and Recruiting and Human Resources Services industries in the search, but an accounting firm with a payroll practice (common at S3) would still get through. Add a read (for example exclude the Accounting industry at S3, or an AI check on the company description).
-7. **Section 2, exclusions from HubSpot:** customers, open deals, active sequences, "contacted in the last 90 days" and active campaign 1 sequences all live in HubSpot, which isn't connected. The guide uses a CSV; PaidHR needs to export those lists, plus the LSETF cohort.
-8. **Section 2, recipient rule:** "max 2 per company" covers one HR and one finance leader. It doesn't say what happens when two new HR (or two new finance) leaders turn up at the same company. Add a tie-break (for example, the most senior title, or the most recent start).
-9. **Signal 1, HR titles:** the HR regex has no Chief People Officer, CHRO or "Head of Human Resources". A new CHRO at an S1 or S2 company would be missed. Add them if they're in scope (the guide's search includes "Head of Human Resources" to match the spec's title list).
-10. **Signal 7, PAYE season:** the switch is evaluated when Clay's formulas run (at push time), not when each email sends. A lead pushed on 14 January gets Email 2 around 17 to 18 January with "ahead of the 31 January return". Set a last push date for season copy (for example 2027-01-08) or accept the overlap.
-11. **Copy, Email 2:** L2 is blank for F1 and F2. The guide joins L1 and L2 into one `E2 Body` field so the sequencer doesn't show an empty line. Record that in the spec's variables contract (`e2body`) or split Email 2 into two templates.
-12. **Still employed check:** not in the spec. The guide adds it as optional (Part 7.5). Decide whether it's required.
-13. **Section 6, variables:** the copy uses `{{first_name}}` and `{{company_name}}`, but the variables contract doesn't define the cleaning for company name (the guide strips Ltd, Limited, PLC, Nigeria, the same as for previous company). Add that to the contract.
+1. **S1 drops "funded".** S1 is tech and fintech by industry and size; funding is not read.
+2. **Tie-break** for two same-persona leaders at one company: most senior title, then earliest start (Part 8.3).
+3. **Accounting is excluded at S3** (Part 4.4), because those firms often sell payroll.
+4. **Still employed is required** (Part 7.5, signal 8).
+
+The other nine now match this guide: Enrich Person for the previous employer, "3 months or less", keyword industry match, the size floor of 20 after enrichment, HubSpot exclusions via the CSV, Chief People Officer, CHRO and Head of Human Resources added to the HR titles, PAYE season copy last pushed on 2027-01-08, the `e2body` field, and company-name cleaning.
+
+If you find a new problem while building, add it here and fix the spec first, then this guide.
