@@ -15,7 +15,7 @@ PaidHR (paidhr.com, formerly Pade HCM): Lagos-based full-suite HRMS for African 
   - `competitors.md`: competitor table, where we win and lose, responses.
 - `context/messaging/`: approved value props, pain points and proof points. Read before writing any copy.
   - `messaging.md`: core message, pillars, persona angles, words to use and avoid.
-  - `facts.md`: the only allowed source of names, numbers and claims for prospect copy (all claims Pending approval).
+  - `facts.md`: the only allowed source of names, numbers and claims for prospect copy (claims approved 2026-11-18; sender: Fred, Product Growth Lead).
 - `context/brand-kit/`: voice, tone, visual rules and assets. Read before producing anything customer-facing.
   - `brand.md`: tone of voice, key phrases, names, values, visual basics.
 - `context/docs/`: company documents.
@@ -32,8 +32,8 @@ PaidHR (paidhr.com, formerly Pade HCM): Lagos-based full-suite HRMS for African 
 - `meetings/`: meeting notes and call transcripts, one file per meeting. Read for decisions and customer voice.
 - `output/campaigns/`: finished campaign assets and copy, one folder per campaign. Read to reuse or iterate.
   - `campaign-strategy.md`: 18 ranked outbound campaign ideas and the pick (campaign 1). DRAFT.
-  - `hr-payroll-hiring-manual-payroll/workflow-spec.md`: campaign 1 spec and copy (3 emails, 2 LinkedIn DMs). COPY-APPROVED 2026-11-17, Nigeria cells live, Kenya and Ghana on hold, not sendable until facts are approved and a sender is named.
-  - `new-hr-finance-leader/workflow-spec.md`: campaign 4 spec and copy (new HR or finance leader in the last 90 days, Nigeria, 7 cells; 3 emails, 2 LinkedIn DMs). COPY-APPROVED 2026-11-18, not sendable until facts are approved and a sender is named.
+  - `hr-payroll-hiring-manual-payroll/workflow-spec.md`: campaign 1 spec and copy (3 emails, 2 LinkedIn DMs). COPY-APPROVED 2026-11-17 (CTAs fixed 2026-11-18), Nigeria cells live, Kenya and Ghana on hold, not sendable until the job-post test pull and /campaign-qa pass.
+  - `new-hr-finance-leader/workflow-spec.md`: campaign 4 spec and copy (new HR or finance leader in the last 90 days, Nigeria, 7 cells; 3 emails, 2 LinkedIn DMs). COPY-APPROVED 2026-11-18, Apollo test pull skipped, not sendable until /campaign-qa passes.
 - `output/outbound/`: outbound sequences, emails and LinkedIn messages. Read before writing new outbound.
 - `output/social/`: social posts and content drafts. Read before writing new social content.
 - `output/data/`: lists, enrichment outputs and analysis (CSV/XLSX are gitignored). Read when building or reusing a list.
@@ -73,5 +73,5 @@ Project skills in `.claude/skills/`, from github.com/bolaji-ships/gtm-starter-ki
 - Miro (MCP, plugin `miro@miro-ai`, project scope): diagrams and visual boards (flows, maps, architecture). Board: [PaidHR GTM System](https://miro.com/app/board/uXjVEO4MgMI=/).
 - GitHub (source of truth): public repo https://github.com/Globaa/paidhr-gtm-os. Work is on branch `context-os-v1` (not merged to `main` yet). `gh` CLI is logged in as Globaa; plain `git push` has no stored credentials, so push with `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. The repo is public: scan for keys and personal paths before every commit.
 - Notion (MCP server `notion`, declared in `.mcp.json`): where we publish finished docs. GitHub stays the source of truth: write and edit in this repo first, then publish to Notion. Ask before publishing.
-  - Published mirror: [PaidHR GTM OS](https://app.notion.com/p/41b62bcf06ca816b829ccaba81a8420f) (under the private page "PaidHR"). Child pages mirror `context/` (ICP, Positioning, Messaging, Brand, Docs) and `output/campaigns/`; raw research is not published. Each page starts with "Source of truth: GitHub" plus the repo link and file path. Last published 2026-11-17 from branch `context-os-v1`. Republish a page after its file changes. Known issue: Notion auto-links `.md` file names (for example to http://facts.md).
+  - Published mirror: [PaidHR GTM OS](https://app.notion.com/p/41b62bcf06ca816b829ccaba81a8420f) (under the private page "PaidHR"). Child pages mirror `context/` (ICP, Positioning, Messaging, Brand, Docs) and `output/campaigns/`; raw research is not published. Each page starts with "Source of truth: GitHub" plus the repo link and file path. Last published 2026-11-17 from branch `context-os-v1`; updated 2026-11-18 (facts, campaign 1, new campaign 4 page). Republish a page after its file changes. Known issue: Notion auto-links `.md` file names (for example to http://facts.md).
 - Planned outbound stack (from `context/docs/gtm-system.md`, **not connected to this repo yet**): Clay (signals, enrichment, people, email waterfall; driven by the Clay skills and `tools/rex`), HubSpot (CRM, exclusions, LinkedIn tasks), n8n (schedules, reply routing, weekly data pull), PlusVibe (email sending). No LinkedIn sending tool chosen yet.

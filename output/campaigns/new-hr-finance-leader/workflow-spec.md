@@ -1,10 +1,10 @@
 # Workflow Spec: New HR or finance leader
 
-**Status:** COPY-APPROVED 2026-11-18 · not sendable until facts.md claims are approved and a sender is named · not sendable until facts.md claims are approved and a sender is named
+**Status:** COPY-APPROVED 2026-11-18 · facts approved and sender named 2026-11-18 · Apollo test pull skipped (decision 2026-11-18) · not sendable until `/campaign-qa` passes
 
 Campaign 4 in `output/campaigns/campaign-strategy.md`. Signal U3 in `context/icp/signal-matrix.md` (workflow W5). Pipeline steps from `context/docs/gtm-system.md`. Built with `/build-workflow-spec`; structure approved by Fredrick on 2026-11-18 at four stops (mother intent and inclusion, sources and signals table, angle matrix, variables and cadence).
 
-**Sending is blocked** until the facts this spec uses are approved in `context/messaging/facts.md` (all Pending) and a sender is named. Copy can be drafted with `{{placeholders}}`.
+**Facts approved and sender named** (Fred, Product Growth Lead) on 2026-11-18 in `context/messaging/facts.md`. **Sending is still blocked** until `/campaign-qa` passes.
 
 ---
 
@@ -51,7 +51,7 @@ Nigeria only. Kenya and Ghana are not built (campaign 1 holds them for lack of a
 
 | Purpose | Source | Tool and price |
 |---|---|---|
-| Trigger: new leader and start date | LinkedIn profile data via Apollo (current title, current-role start date, location) | treg `apollo.people.search` ($0) or Clay "Find People". **Coverage of Nigerian profiles and freshness of start dates unknown: test pull first** |
+| Trigger: new leader and start date | LinkedIn profile data via Apollo (current title, current-role start date, location) | treg `apollo.people.search` ($0) or Clay "Find People". **Coverage of Nigerian profiles and freshness of start dates unknown; test pull skipped (2026-11-18), watch the first live pull** |
 | Previous employer | Employment history on the same Apollo record | No extra cost |
 | Job-change check when history is missing or unclear | LinkedIn job-change detection | treg `leadmagic.x.job-change-detector` ($0.075), only on rows Apollo history cannot settle |
 | Domain, headcount, industry, HQ country | Apollo company data | Clay, own key. Credit cost unknown until `/calculate-costs` |
@@ -94,7 +94,7 @@ Persona x segment x HR staff = **7 cells, all LIVE (NG).** HR: 2 segments x 2 HR
 
 **Niche-native test.** Every angle is tied to one moment: a person new in the seat, inheriting or setting up payroll just before the first annual return on the new bands. The H1/H2 split (handover versus inherited process) and the F3 ERP line could not be sent unchanged by any HR vendor's generic new-leader email.
 
-**Facts the angles depend on (all Pending in facts.md):** Variant B/C; the tax-law line; the 31 January return; the 2025 filing record; FAMASI and Heroshe; WhatsApp and USSD access; attendance into payroll; receipts per remittance (added 2026-11-18); ERP journals (added 2026-11-18, F3 only).
+**Facts the angles depend on (approved in facts.md 2026-11-18):** Variant B/C; the tax-law line; the 31 January return; the 2025 filing record; FAMASI and Heroshe; WhatsApp and USSD access; attendance into payroll; receipts per remittance (added 2026-11-18); ERP journals (added 2026-11-18, F3 only).
 
 ## 6. Variables contract [ENGINE]
 
@@ -107,7 +107,7 @@ Persona x segment x HR staff = **7 cells, all LIVE (NG).** HR: 2 segments x 2 HR
 
 **Routing fields, never shown in copy:** `persona`, `segment`, `hr_team` (H cells only), `paye_season`, `start_date` (QA only), `linkedin_url` (QA only).
 
-**Not allowed in copy:** raw HR headcount, start date or days in role, the previous company's tools or any comparison with them, funding, anything not in this table. Sender name and signature come from facts.md (open question).
+**Not allowed in copy:** raw HR headcount, start date or days in role, the previous company's tools or any comparison with them, funding, anything not in this table. Sender name and signature come from facts.md (Fred, Product Growth Lead).
 
 ## 7. Cadence and channel [ENGINE]
 
@@ -119,15 +119,15 @@ Persona x segment x HR staff = **7 cells, all LIVE (NG).** HR: 2 segments x 2 HR
   - A reply on either channel pauses the other (n8n).
 - **Timing line:** the 31 January 2027 return anchor runs until 2027-01-15, then every cell switches to "first filing cycles".
 - **Before launch:**
-  - Test pull: check that Apollo start dates for Nigerian profiles are fresh. If they lag 60+ days the 90-day window is mostly gone. Biggest risk.
-  - facts.md approvals (including the two lines added 2026-11-18) and a named sender.
+  - Test pull of Apollo start dates: **skipped** (Fredrick, 2026-11-18). Risk accepted: if start dates for Nigerian profiles lag 60+ days, most of the 90-day window is gone. Watch the start-date spread in the first live pull.
+  - facts.md approvals and a named sender: done 2026-11-18.
   - `/campaign-qa` passes on the Clay table and the PlusVibe campaign.
 
 ---
 
 ## Copy
 
-Written with `/campaign-copy` and reviewed as the target personas (new Head of People at funded tech, new HR Manager at a logistics firm, new CFO at a 200+ employer) plus the human test on 2026-11-18. Channel: email (3 steps) plus LinkedIn (empty connection request, 2 DMs). Every claim is in `context/messaging/facts.md` and still **Pending**. Sender: `{{sender_signature}}` / `{{sender_name}}` until facts.md names one. Routes are exhaustive (every live lead is H1 to H4 or F1 to F3), so lines routed by cell have no fallback; lines routed by `paye_season` do.
+Written with `/campaign-copy` and reviewed as the target personas (new Head of People at funded tech, new HR Manager at a logistics firm, new CFO at a 200+ employer) plus the human test on 2026-11-18. Channel: email (3 steps) plus LinkedIn (empty connection request, 2 DMs). Every claim is in `context/messaging/facts.md`, approved 2026-11-18. Sender: Fred, Product Growth Lead (`{{sender_signature}}` = "Fred" / "Product Growth Lead, PaidHR"; `{{sender_name}}` = "Fred"). Routes are exhaustive (every live lead is H1 to H4 or F1 to F3), so lines routed by cell have no fallback; lines routed by `paye_season` do.
 
 ### Email 1 (day 0, new thread)
 
@@ -251,7 +251,7 @@ Written with `/campaign-copy` and reviewed as the target personas (new Head of P
 ### Copy notes
 
 - Word counts (E1, season L1): H1 98, H2 93, H3 98, H4 98, F1 80, F2 87, F3 85. Under the 120 ceiling; the 60 target is not reachable without dropping a line. E2 about 25 to 40. E3 about 15 to 18. DM 1 about 13 to 18. DM 2 about 26.
-- Review changes (2026-11-18): rewrote L1 (both variants) so it no longer reads mechanically; removed repeated `{{company_name}}` in L2 (H1, H4) and cut H2 and H3; smoothed F1 and F2; made the H1 receipts line concrete; removed spintax from every dynamic CTA (E1, E2), since dynamic lines resolve to one sentence. Campaign 1 has the same spintax-in-dynamic-CTA issue; not fixed there yet.
+- Review changes (2026-11-18): rewrote L1 (both variants) so it no longer reads mechanically; removed repeated `{{company_name}}` in L2 (H1, H4) and cut H2 and H3; smoothed F1 and F2; made the H1 receipts line concrete; removed spintax from every dynamic CTA (E1, E2), since dynamic lines resolve to one sentence. Campaign 1 had the same issue; fixed there on 2026-11-18.
 - `{{job_title}}` is used only in DM 1; Email 1 no longer uses it.
-- Wording added to approved facts, to sign off with them: "PaidHR customers have seen payroll processing cut from over a week to one day" (the source is an Accion aggregate, no named customer); "with a receipt for each" / "Each remittance comes with a receipt" (receipts fact added 2026-11-18); FAMASI and Heroshe industry descriptors.
-- Before sending: PaidHR approves the facts used, a sender is named, the 31 January date is checked against the tax authority, the Apollo start-date test pull passes, and `/campaign-qa` passes. Sequencer export (`sequencer-export.md`) not yet written.
+- Wording approved with the facts on 2026-11-18: "PaidHR customers have seen payroll processing cut from over a week to one day" (the source is an Accion aggregate, no named customer); "with a receipt for each" / "Each remittance comes with a receipt" (receipts fact added 2026-11-18); FAMASI and Heroshe industry descriptors.
+- Before sending: the 31 January date is checked against the tax authority and `/campaign-qa` passes. Facts and sender done 2026-11-18; Apollo test pull skipped. Sequencer export (`sequencer-export.md`) not yet written.

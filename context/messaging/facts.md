@@ -2,9 +2,9 @@
 
 > Built from `knowledge-base/playbooks/templates/facts-template.md`. This is the ONLY source of names, numbers and claims for prospect-facing copy (`/campaign-copy` FACTS GATE). Anything not listed here renders as `{{placeholder}}` in copy.
 >
-> **Status:** every entry comes from `context/docs/research/`, but nothing has been approved yet. Each claim shows "Pending" until a PaidHR owner signs it off. Do not send copy built on a Pending claim.
+> **Status:** every entry comes from `context/docs/research/`. The value-prop variants, every claim in the table below, FAMASI and Heroshe were approved by Fredrick on 2026-11-18. Anything added later stays "Pending" until signed off. Do not send copy built on a Pending claim.
 
-**Last updated:** 2026-11-12 by Claude (draft from research). Approver: open question.
+**Last updated:** 2026-11-18 (approvals and sender). Approver: Fredrick.
 
 ---
 
@@ -12,16 +12,16 @@
 
 | Field | Value |
 |---|---|
-| Sender name(s) | Open question (not in research) |
-| Title | Open question |
-| Signature format | Open question |
-| Sender persona notes | Open question. Candidates from research: Seye Bandele (CEO), whose LinkedIn voice is data plus mission (voice.md). Needs his approval |
+| Sender name(s) | Fred (decision 2026-11-18) |
+| Title | Product Growth Lead |
+| Signature format | Email: `Fred` on one line, `Product Growth Lead, PaidHR` on the next (`{{sender_signature}}`). LinkedIn DMs: `Fred` (`{{sender_name}}`) |
+| Sender persona notes | A product person who knows payroll and filing, writing peer to peer. Plain and warm, no marketing tone (voice.md) |
 
 ## What we do (locked value prop)
 
 - **Variant A:** "PaidHR is an HR and payroll platform for African businesses: payroll, automatic PAYE and pension filing, and earned wage access for your staff, on one record." (company.md; messaging.md)
 - **Variant B:** "PaidHR helps Nigerian employers pay staff and file PAYE, pension, NHF and NSITF on time every run, without spreadsheets or chasing agencies." (company.md; customer-videos.md)
-- **Variant C (short form of B, no new claim):** "PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run." Pending (added 2026-11-17 for the hr-payroll-hiring-manual-payroll copy)
+- **Variant C (short form of B, no new claim):** "PaidHR runs payroll and files PAYE, pension, NHF and NSITF on time every run." Approved by Fredrick, 2026-11-18 (added 2026-11-17 for the hr-payroll-hiring-manual-payroll copy)
 
 Product one-liner (context, not copy): full-suite HRMS plus employee financial wellness (EWA, loans, wallet), for African employers from 20 staff up, delivered as cloud software with an employee app, WhatsApp and USSD. (company.md)
 
@@ -29,21 +29,23 @@ Product one-liner (context, not copy): full-suite HRMS plus employee financial w
 
 | Claim | Approved phrasing | Source | Approved by / date |
 |---|---|---|---|
-| 2025 statutory filings | "₦934M in PAYE and ₦754M in pension filed in 2025, all on time" | https://www.paidhr.com/ (company.md) | Pending |
-| 2026 payroll volume | "₦119.2bn in payroll processed in 2026 so far" (site, checked 2026-11-12; goes stale) | https://www.paidhr.com/ (company.md) | Pending |
-| Tax law | "Updated for Nigeria's new tax law from 1 January 2026". Short form: "already updated for the new tax law" (added 2026-11-17) | https://www.paidhr.com/ (company.md) | Pending |
-| Security | "ISO 27001 certified and NDPA registered" | https://www.paidhr.com/ (company.md) | Pending |
-| Currencies | "payroll in 45+ currencies" | https://www.paidhr.com/ (company.md) | Pending (LinkedIn and press say 49) |
-| Frontline access | "Employees can check payslips, request leave and access earned wages on WhatsApp and USSD" | Founder LinkedIn post, 2026-10-19 (company.md) | Pending |
-| Attendance into payroll | "Hours from attendance flow straight into payroll" (PaidHR's own line: "Every hour tracked, every hour paid") | https://www.paidhr.com/time-and-attendance (company.md, Modules) | Pending (added 2026-11-17 for the hr-payroll-hiring-manual-payroll spec) |
-| Annual PAYE return | "The first annual PAYE return under the 2026 tax bands is due by 31 January" (regulatory date, not a PaidHR claim; source is a search summary, confirm against FIRS/NRS) | market.md; signals.md (A1) | Pending (added 2026-11-17 for the hr-payroll-hiring-manual-payroll spec, Email 2) |
-| Receipts per remittance | "a receipt for each remittance" (Heroshe asked for "a receipt... an evidence for the payment" and got it) | YouTube 1L3R7CMEmjI (customer-videos.md) | Pending (added 2026-11-18 for the new-hr-finance-leader spec; also used in campaign 1 angles) |
-| Payroll journals into the ERP | "Push payroll journals and people data into the enterprise systems your finance team lives in." Never name an ERP (no named integration found) | https://www.paidhr.com/platform (company.md, Integrations) | Pending (added 2026-11-18 for the new-hr-finance-leader spec, cell F3) |
-| Employer cost of EWA and loans | "at no cost to your business" (the employer may choose to cover EWA transaction fees) | paidhr.com employee-benefits and loan marketplace pages (company.md) | Pending |
-| Funding | "backed by Accion Venture Lab" | Accion release (company.md) | Pending |
-| FAMASI result | "FAMASI's CEO got back about an hour on every payroll run" | YouTube thPhRuim05g (customer-videos.md) | Pending |
-| Heroshe result | "Heroshe's statutory remittances used to take two weeks or more" | YouTube 1L3R7CMEmjI (customer-videos.md) | Pending |
-| Processing time | "payroll processing cut from over a week to one day" (Accion, aggregate, no named customer) | Accion article (customers.md) | Pending |
+| 2025 statutory filings | "₦934M in PAYE and ₦754M in pension filed in 2025, all on time" | https://www.paidhr.com/ (company.md) | Approved by Fredrick, 2026-11-18 |
+| 2026 payroll volume | "₦119.2bn in payroll processed in 2026 so far" (site, checked 2026-11-12; goes stale) | https://www.paidhr.com/ (company.md) | Approved by Fredrick, 2026-11-18 |
+| Tax law | "Updated for Nigeria's new tax law from 1 January 2026". Short form: "already updated for the new tax law" (added 2026-11-17) | https://www.paidhr.com/ (company.md) | Approved by Fredrick, 2026-11-18 |
+| Security | "ISO 27001 certified and NDPA registered" | https://www.paidhr.com/ (company.md) | Approved by Fredrick, 2026-11-18 |
+| Currencies | "payroll in 45+ currencies" | https://www.paidhr.com/ (company.md) | Approved by Fredrick, 2026-11-18 (LinkedIn and press say 49) |
+| Frontline access | "Employees can check payslips, request leave and access earned wages on WhatsApp and USSD" | Founder LinkedIn post, 2026-10-19 (company.md) | Approved by Fredrick, 2026-11-18 |
+| Attendance into payroll | "Hours from attendance flow straight into payroll" (PaidHR's own line: "Every hour tracked, every hour paid") | https://www.paidhr.com/time-and-attendance (company.md, Modules) | Approved by Fredrick, 2026-11-18 (added 2026-11-17 for the hr-payroll-hiring-manual-payroll spec) |
+| Annual PAYE return | "The first annual PAYE return under the 2026 tax bands is due by 31 January" (regulatory date, not a PaidHR claim; source is a search summary, confirm against FIRS/NRS) | market.md; signals.md (A1) | Approved by Fredrick, 2026-11-18 (added 2026-11-17 for the hr-payroll-hiring-manual-payroll spec, Email 2) |
+| Receipts per remittance | "a receipt for each remittance" (Heroshe asked for "a receipt... an evidence for the payment" and got it) | YouTube 1L3R7CMEmjI (customer-videos.md) | Approved by Fredrick, 2026-11-18 (added 2026-11-18 for the new-hr-finance-leader spec; also used in campaign 1 angles) |
+| Payroll journals into the ERP | "Push payroll journals and people data into the enterprise systems your finance team lives in." Never name an ERP (no named integration found) | https://www.paidhr.com/platform (company.md, Integrations) | Approved by Fredrick, 2026-11-18 (added 2026-11-18 for the new-hr-finance-leader spec, cell F3) |
+| Employer cost of EWA and loans | "at no cost to your business" (the employer may choose to cover EWA transaction fees) | paidhr.com employee-benefits and loan marketplace pages (company.md) | Approved by Fredrick, 2026-11-18 |
+| Funding | "backed by Accion Venture Lab" | Accion release (company.md) | Approved by Fredrick, 2026-11-18 |
+| FAMASI result | "FAMASI's CEO got back about an hour on every payroll run" | YouTube thPhRuim05g (customer-videos.md) | Approved by Fredrick, 2026-11-18 |
+| Heroshe result | "Heroshe's statutory remittances used to take two weeks or more" | YouTube 1L3R7CMEmjI (customer-videos.md) | Approved by Fredrick, 2026-11-18 |
+| Processing time | "payroll processing cut from over a week to one day" (Accion, aggregate, no named customer) | Accion article (customers.md) | Approved by Fredrick, 2026-11-18 |
+
+**Copy wording approved with the claims (2026-11-18):** "after moving payroll to PaidHR", "before they moved to PaidHR", "filed through PaidHR", "PaidHR customers have seen payroll processing cut from over a week to one day", "Each remittance comes with a receipt", and the descriptors "a health tech startup" (FAMASI) and "a logistics company" (Heroshe).
 
 **Formatting rules for proof:**
 - Write "PaidHR" (never "Pade" or "Paid HR"), "FAMASI", "Heroshe".
@@ -60,8 +62,8 @@ Product one-liner (context, not copy): full-suite HRMS plus employee financial w
 
 | Name | What it proves | Matches | Caveat |
 |---|---|---|---|
-| FAMASI | Founder time saved; simpler than other tools | Health tech, founder-run small team | 2023 video, Pade brand, size unknown. Pending approval |
-| Heroshe | Remittance reliability, receipts, payslip self-service | Logistics / cross-border shipping | 2023, Pade brand, size unknown. Use only attributed quotes. Pending approval |
+| FAMASI | Founder time saved; simpler than other tools | Health tech, founder-run small team | 2023 video, Pade brand, size unknown. Approved by Fredrick, 2026-11-18 |
+| Heroshe | Remittance reliability, receipts, payslip self-service | Logistics / cross-border shipping | 2023, Pade brand, size unknown. Use only attributed quotes. Approved by Fredrick, 2026-11-18 |
 
 Logo-only names (Flutterwave, Mono, Risevest, Kredete, GetEquity, GO54, AEC, Noi Polls, Sygnite, Mira, ReelFruit, Wilan, Waaw Foundation, Selar, Redeemer Health Village, Nafa, Gasland) stay out of copy until approved. (customers.md)
 

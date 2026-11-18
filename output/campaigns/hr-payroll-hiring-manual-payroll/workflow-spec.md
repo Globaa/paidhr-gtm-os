@@ -1,10 +1,10 @@
 # Workflow Spec: HR or payroll hire, manual payroll skills
 
-**Status:** COPY-APPROVED 2026-11-17 · NG cells only (KE and GH on HOLD) · not sendable until facts.md claims are approved and a sender is named
+**Status:** COPY-APPROVED 2026-11-17 · CTAs fixed 2026-11-18 · NG cells only (KE and GH on HOLD) · facts approved and sender named 2026-11-18 · not sendable until the job-post test pull and `/campaign-qa` pass
 
 Campaign 1 in `output/campaigns/campaign-strategy.md`. Signals U1 and U2 in `context/icp/signal-matrix.md` (workflow W1). Pipeline steps from `context/docs/gtm-system.md`. Built with `/build-workflow-spec`; structure approved by Fredrick on 2026-11-17 at two stops (signals table, angle matrix).
 
-**Sending is blocked** until the facts this spec uses are approved in `context/messaging/facts.md` (all Pending) and a sender is named. Copy can be drafted with `{{placeholders}}`.
+**Facts approved and sender named** (Fred, Product Growth Lead) on 2026-11-18 in `context/messaging/facts.md`. **Sending is still blocked** until the job-post test pull and `/campaign-qa` pass.
 
 ---
 
@@ -105,7 +105,7 @@ Country (3) x segment (2) x HR staff (2) = **12 cells. 4 live (NG), 8 HOLD (KE, 
 
 **Niche-native test.** Each angle is tied to one moment: a company hiring someone to do `{{payroll_duty}}`. A and C differ by workforce (office versus shift and site); B and D differ the same way.
 
-**Facts the angles depend on (all Pending in facts.md):** remittance after each run with receipts; WhatsApp and USSD access; attendance flowing into payroll (added 2026-11-17); FAMASI and Heroshe proof; the 2026 tax-law line. KE and GH need `{{local_filings}}` approved per country.
+**Facts the angles depend on (approved in facts.md 2026-11-18):** remittance after each run with receipts; WhatsApp and USSD access; attendance flowing into payroll (added 2026-11-17); FAMASI and Heroshe proof; the 2026 tax-law line. KE and GH need `{{local_filings}}` approved per country.
 
 ## 6. Variables contract [ENGINE]
 
@@ -120,7 +120,7 @@ Country (3) x segment (2) x HR staff (2) = **12 cells. 4 live (NG), 8 HOLD (KE, 
 
 **Routing fields, never shown in copy:** `country`, `segment`, `hr_team`, `paye_season` (switches the NG timing line on or off), `job_url` (for QA only).
 
-**Not allowed in copy:** raw HR headcount, raw job-post dates, funding amounts, anything not in this table. Sender name and signature come from facts.md (open question).
+**Not allowed in copy:** raw HR headcount, raw job-post dates, funding amounts, anything not in this table. Sender name and signature come from facts.md (Fred, Product Growth Lead).
 
 ## 7. Cadence and channel [ENGINE]
 
@@ -133,14 +133,14 @@ Country (3) x segment (2) x HR staff (2) = **12 cells. 4 live (NG), 8 HOLD (KE, 
 - **Timing line:** the 31 January 2027 return line runs in NG cells until 2027-01-15, then switches off.
 - **Before launch:**
   - Test pull for job-post coverage.
-  - facts.md approvals and a named sender.
+  - facts.md approvals and a named sender: done 2026-11-18.
   - `/campaign-qa` passes on the Clay table and the PlusVibe campaign.
 
 ---
 
 ## Copy
 
-Written with `/campaign-copy` and reviewed as the target personas (founder, MD, HR lead) plus the human test on 2026-11-17. NG cells only (KE and GH wait for their hold to lift). Channel: email (3 steps) plus LinkedIn (empty connection request, 2 DMs). Every claim is in `context/messaging/facts.md` and still **Pending**: approved copy, not yet sendable. Sender: `{{sender_signature}}` / `{{sender_name}}` until facts.md names one. Routes are exhaustive (every live lead is NG-A, NG-B, NG-C or NG-D), so lines routed by cell have no fallback.
+Written with `/campaign-copy` and reviewed as the target personas (founder, MD, HR lead) plus the human test on 2026-11-17. NG cells only (KE and GH wait for their hold to lift). Channel: email (3 steps) plus LinkedIn (empty connection request, 2 DMs). Every claim is in `context/messaging/facts.md`, approved 2026-11-18. Sender: Fred, Product Growth Lead (`{{sender_signature}}` = "Fred" / "Product Growth Lead, PaidHR"; `{{sender_name}}` = "Fred"). Routes are exhaustive (every live lead is NG-A, NG-B, NG-C or NG-D), so lines routed by cell have no fallback.
 
 ### Email 1 (day 0, new thread)
 
@@ -169,8 +169,8 @@ Written with `/campaign-copy` and reviewed as the target personas (founder, MD, 
 - + NG-C, NG-D: At Heroshe, a logistics company, statutory remittances used to take two weeks or more before they moved to PaidHR.
 
 **CTA (dynamic, by HR staff):**
-- + 0 HR (NG-A, NG-C): `{Worth having this running before the new hire starts?|Would it help to have this in place before the new hire's first month?}`
-- + 1+ HR (NG-B, NG-D): `{Would it help to have the filing side running before they start?|Worth a look before the new person starts?}`
+- + 0 HR (NG-A, NG-C): Worth having this running before the new hire starts?
+- + 1+ HR (NG-B, NG-D): Would it help to have the filing side running before they start?
 
 **Sign-off:** `{{sender_signature}}`
 
@@ -195,8 +195,8 @@ Written with `/campaign-copy` and reviewed as the target personas (founder, MD, 
 **Greeting:** `{{first_name}},`
 
 **CTA, right person (dynamic, by HR staff):**
-- + 0 HR (NG-A, NG-C): `{Once your {{job_title}} joins, should I speak with them instead?|Would it make more sense to pick this up with your {{job_title}} once they join?}`
-- + 1+ HR (NG-B, NG-D): `{Is payroll yours at {{company_name}}, or is someone else better to ask?|If payroll sits with finance at {{company_name}}, who would be best to speak with?}`
+- + 0 HR (NG-A, NG-C): Once your {{job_title}} joins, should I speak with them instead?
+- + 1+ HR (NG-B, NG-D): Is payroll yours at {{company_name}}, or is someone else better to ask?
 
 **Sign-off:** `{{sender_signature}}`
 
@@ -235,4 +235,5 @@ Written with `/campaign-copy` and reviewed as the target personas (founder, MD, 
 - Word counts: E1 NG-A 83, NG-B 70, NG-C 85, NG-D 82. E2 about 60. E3 about 15 to 20. DM 2 about 20.
 - Review changes (2026-11-17): fixed the "a/an" bug before `{{job_title}}`; shorter value line (Variant C); CTA for HR leads no longer reads as replacing their hire; industry descriptors on proof; earned-wages line removed from E3; "on one record" removed from DM 2.
 - Wording added to approved facts, to sign off with them: "after moving payroll to PaidHR", "before they moved to PaidHR", "filed through PaidHR", and the FAMASI and Heroshe industry descriptors.
-- Before sending: PaidHR approves the facts used, a sender is named, the 31 January date is checked against the tax authority, and `/campaign-qa` passes. Sequencer export (`sequencer-export.md`) not yet written.
+- CTA fix (2026-11-18): removed spintax from the dynamic CTAs in Email 1 and Email 3 (dynamic lines resolve to one sentence); kept the first variant of each.
+- Before sending: the 31 January date is checked against the tax authority, the job-post test pull passes, and `/campaign-qa` passes. Facts and sender done 2026-11-18. Sequencer export (`sequencer-export.md`) not yet written.
